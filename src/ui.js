@@ -10,16 +10,17 @@ import { InputNode } from './nodes/inputNode';
 import { LLMNode } from './nodes/llmNode';
 import { OutputNode } from './nodes/outputNode';
 import { TextNode } from './nodes/textNode';
-
+import { MathOperationNode } from './nodes/mathOperationNode';
 import 'reactflow/dist/style.css';
 
 const gridSize = 20;
 const proOptions = { hideAttribution: true };
 const nodeTypes = {
   customInput: InputNode,
-  llm: LLMNode,
+  llm: LLMNode, 
   customOutput: OutputNode,
   text: TextNode,
+  mathOperation: MathOperationNode,
 };
 
 const selector = (state) => ({
@@ -63,6 +64,9 @@ export const PipelineUI = () => {
           nodeData.outputName = `output_${nodeID}`;
           nodeData.outputType = 'Text';
           break;
+          case 'mathOperation':
+            nodeData.operation = '+';
+            break;
         // Add cases for other node types as needed
       }
       
