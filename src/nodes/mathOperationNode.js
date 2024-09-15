@@ -1,6 +1,6 @@
 // mathOperationNode.js
 import React, { useState } from 'react';
-import { BaseNode } from './baseNode';
+import { AbstractedNode } from './AbstractedNode';
 
 export const MathOperationNode = ({ id, data }) => {
   const [operation, setOperation] = useState(data.operation || '+');
@@ -10,7 +10,7 @@ export const MathOperationNode = ({ id, data }) => {
   };
 
   return (
-    <BaseNode 
+    <AbstractedNode 
       id={id} 
       type="Math Operation" 
       inputs={['input1', 'input2']} 
@@ -27,6 +27,6 @@ export const MathOperationNode = ({ id, data }) => {
           </select>
         </label>
       </div>
-    </BaseNode>
+    </AbstractedNode>
   );
 };

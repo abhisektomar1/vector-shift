@@ -1,6 +1,6 @@
 // inputNode.js
 import React, { useState } from 'react';
-import { BaseNode } from './baseNode';
+import { AbstractedNode } from './AbstractedNode';
 
 export const InputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.inputName || id.replace('customInput-', 'input_'));
@@ -15,7 +15,7 @@ export const InputNode = ({ id, data }) => {
   };
 
   return (
-    <BaseNode id={id} type="Input" outputs={['value']}>
+    <AbstractedNode id={id} type="Input" outputs={['value']}>
       <div>
         <label>
           Name:
@@ -35,6 +35,6 @@ export const InputNode = ({ id, data }) => {
           </select>
         </label>
       </div>
-    </BaseNode>
+    </AbstractedNode>
   );
 };
