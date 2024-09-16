@@ -1,34 +1,20 @@
-// llmNode.js
-
-import { Handle, Position } from 'reactflow';
+import React from 'react';
+import { AbstractedNode } from './AbstractedNode';
+import { Label } from '../components/UI';
 
 export const LLMNode = ({ id, data }) => {
-
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
-      <Handle
-        type="target"
-        position={Position.Left}
-        id={`${id}-system`}
-        style={{top: `${100/3}%`}}
-      />
-      <Handle
-        type="target"
-        position={Position.Left}
-        id={`${id}-prompt`}
-        style={{top: `${200/3}%`}}
-      />
-      <div>
-        <span>LLM</span>
+    <AbstractedNode
+      id={id}
+      type="LLM"
+      inputs={['system', 'prompt']}
+      outputs={['response']}
+    >
+      <div className="space-y-2">
+        <Label htmlFor={`${id}-description`} className="text-gray-700 dark:text-gray-300">
+          This is a LLM.
+        </Label>
       </div>
-      <div>
-        <span>This is a LLM.</span>
-      </div>
-      <Handle
-        type="source"
-        position={Position.Right}
-        id={`${id}-response`}
-      />
-    </div>
+    </AbstractedNode>
   );
-}
+};

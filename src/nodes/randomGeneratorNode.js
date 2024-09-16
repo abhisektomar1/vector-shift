@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AbstractedNode } from './AbstractedNode';
+import { Input, Label } from '../components/UI';
 
 export const RandomGeneratorNode = ({ id, data }) => {
   const [min, setMin] = useState(data.min || 0);
@@ -12,22 +13,22 @@ export const RandomGeneratorNode = ({ id, data }) => {
       outputs={['randomNumber']}
     >
       <div>
-        <label>
+        <Label>
           Min:
-          <input 
+          <Input
             type="number" 
             value={min} 
             onChange={(e) => setMin(Number(e.target.value))} 
           />
-        </label>
-        <label>
+        </Label>
+        <Label>
           Max:
-          <input 
+          <Input 
             type="number" 
             value={max} 
             onChange={(e) => setMax(Number(e.target.value))} 
           />
-        </label>
+        </Label>
       </div>
     </AbstractedNode>
   );

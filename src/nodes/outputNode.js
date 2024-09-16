@@ -1,11 +1,10 @@
-// outputNode.js
-
 import { useState } from 'react';
-import { Handle, Position } from 'reactflow';
+import { AbstractedNode } from './AbstractedNode';
+import { Label, Input, Select } from '../components/UI';  
 
 export const OutputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.outputName || id.replace('customOutput-', 'output_'));
-  const [outputType, setOutputType] = useState(data.outputType || 'Text');
+  const [outputType, setOutputType] = useState(data?.outputType || 'Text');
 
   const handleNameChange = (e) => {
     setCurrName(e.target.value);
@@ -15,33 +14,41 @@ export const OutputNode = ({ id, data }) => {
     setOutputType(e.target.value);
   };
 
+  const outputTypeOptions = [
+    { value: 'Text', label: 'Text' },
+    { value: 'File', label: 'Image' }
+  ];
+
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
-      <Handle
-        type="target"
-        position={Position.Left}
-        id={`${id}-value`}
-      />
-      <div>
-        <span>Output</span>
-      </div>
-      <div>
-        <label>
+    <AbstractedNode
+      id={id}
+      type="Output"
+      inputs={['value']}
+      outputs={[]}
+    >
+      <div className="space-y-2">
+        <Label htmlFor={`${id}-name`} className="text-gray-700 dark:text-gray-300">
           Name:
-          <input 
-            type="text" 
-            value={currName} 
-            onChange={handleNameChange} 
-          />
-        </label>
-        <label>
+        </Label>
+        <Input 
+          id={`${id}-name`}
+          type="text"
+          value={currName}
+          onChange={handleNameChange}
+          className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md"
+        />
+
+        <Label htmlFor={`${id}-type`} className="text-gray-700 dark:text-gray-300">
           Type:
-          <select value={outputType} onChange={handleTypeChange}>
-            <option value="Text">Text</option>
-            <option value="File">Image</option>
-          </select>
-        </label>
+        </Label>
+        <Select 
+          id={`${id}-type`} 
+          value={outputType} 
+          onChange={handleTypeChange} 
+          options={outputTypeOptions} 
+          className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md"
+        />
       </div>
-    </div>
+    </AbstractedNode>
   );
-}
+};

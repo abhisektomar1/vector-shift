@@ -1,6 +1,7 @@
-// inputNode.js
 import React, { useState } from 'react';
 import { AbstractedNode } from './AbstractedNode';
+import { Input, Label, Select } from '../components/UI';
+
 
 export const InputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.inputName || id.replace('customInput-', 'input_'));
@@ -16,24 +17,26 @@ export const InputNode = ({ id, data }) => {
 
   return (
     <AbstractedNode id={id} type="Input" outputs={['value']}>
-      <div>
-        <label>
-          Name:
-          <input 
-            type="text" 
-            value={currName} 
-            onChange={handleNameChange} 
-          />
-        </label>
+      <div className="mb-4">
+        <Label htmlFor="name">Name:</Label>
+        <Input
+          id="name"
+          value={currName}
+          onChange={handleNameChange}
+          placeholder="Enter input name"
+        />
       </div>
       <div>
-        <label>
-          Type:
-          <select value={inputType} onChange={handleTypeChange}>
-            <option value="Text">Text</option>
-            <option value="File">File</option>
-          </select>
-        </label>
+        <Label htmlFor="type">Type:</Label>
+        <Select
+          id="type"
+          value={inputType}
+          onChange={handleTypeChange}
+          options={[
+            { label: 'Text', value: 'Text' },
+            { label: 'File', value: 'File' }
+          ]}
+        />
       </div>
     </AbstractedNode>
   );

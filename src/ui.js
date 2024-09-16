@@ -60,33 +60,33 @@ export const PipelineUI = () => {
       nodeType: `${type}`,
     };
     // eslint-disable-next-line default-case
-    switch (type) {
-      case "customInput":
-        nodeData.inputName = `input_${nodeID}`;
-        nodeData.inputType = "Text";
-        break;
-      case "customOutput":
-        nodeData.outputName = `output_${nodeID}`;
-        nodeData.outputType = "Text";
-        break;
-      case "mathOperation":
-        nodeData.operation = "+";
-        break;
-      case "dateTime":
-        nodeData.format = "YYYY-MM-DD HH:mm:ss";
-        break;
-      case "randomGenerator":
-        nodeData.min = 0;
-        nodeData.max = 100;
-        break;
-      case "colorPicker":
-        nodeData.color = "#000000";
-        break;
-      case "languageTranslator":
-        nodeData.sourceLang = "en";
-        nodeData.targetLang = "es";
-        break;
-    }
+    // switch (type) {
+    //   case "customInput":
+    //     nodeData.inputName = `input_${nodeID}`;
+    //     nodeData.inputType = "Text";
+    //     break;
+    //   case "customOutput":
+    //     nodeData.outputName = `output_${nodeID}`;
+    //     nodeData.outputType = "Text";
+    //     break;
+    //   case "mathOperation":
+    //     nodeData.operation = "+";
+    //     break;
+    //   case "dateTime":
+    //     nodeData.format = "YYYY-MM-DD HH:mm:ss";
+    //     break;
+    //   case "randomGenerator":
+    //     nodeData.min = 0;
+    //     nodeData.max = 100;
+    //     break;
+    //   case "colorPicker":
+    //     nodeData.color = "#000000";
+    //     break;
+    //   case "languageTranslator":
+    //     nodeData.sourceLang = "en";
+    //     nodeData.targetLang = "es";
+    //     break;
+    // }
 
     return nodeData;
   };
